@@ -22,7 +22,7 @@ host = os.getenv('HBNB_API_HOST', '0.0.0.0')
 port = os.getenv('HBNB_API_PORT', 5000)
 
 # Cross-Origin Resource Sharing
-cors = CORS(app, resources={r'/*': {'origins': host}})
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 # app_views BluePrint defined in api.v1.views
 app.register_blueprint(app_views)
@@ -50,7 +50,7 @@ def handle_404(exception):
 
 
 @app.errorhandler(400)
-def handle_404(exception):
+def handle_400(exception):
     """
     handles 400 errros, in the event that global error handler fails
     """
